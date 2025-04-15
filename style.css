@@ -1,9 +1,58 @@
 /* Smooth transition for theme changes */
 body {
     transition: background-color 0.5s ease, color 0.5s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
 }
 
-/* Button animation */
+/* Default light mode */
+body {
+    background-color: #ffffff;
+    color: #000000;
+}
+
+/* Dark mode */
+body.dark-mode {
+    background-color: #121212;
+    color: #ffffff;
+}
+
+/* Ball styling */
+.ball {
+    width: 50px;
+    height: 50px;
+    background-color: #ff5733;
+    border-radius: 50%;
+    position: absolute;
+    animation: bounce 2s infinite ease-in-out, colorChange 4s infinite alternate;
+}
+
+/* Bounce animation */
+@keyframes bounce {
+    0%, 100% {
+        bottom: 0;
+        transform: scale(1);
+    }
+    50% {
+        bottom: 300px;
+        transform: scale(1.2);
+    }
+}
+
+/* Color change animation */
+@keyframes colorChange {
+    0% {
+        background-color: #ff5733;
+    }
+    100% {
+        background-color: #33ff57;
+    }
+}
+
+/* Button styling */
 .toggle-btn {
     position: absolute;
     top: 20px;
@@ -22,19 +71,13 @@ body {
     transform: scale(1.1);
 }
 
-/* Dark mode styles */
-body.dark-mode {
-    background-color: #121212;
-    color: #fff;
-}
-
 /* Button color change in dark mode */
 body.dark-mode .toggle-btn {
     background-color: #fff;
     color: #000;
 }
 
-/* Fading effect for the background */
+/* Fading effect for background */
 @keyframes fadeIn {
     from {
         opacity: 0;
